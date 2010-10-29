@@ -1,12 +1,17 @@
 {
-   "background_page": "background.html",
-   "description": "Official Storify Extension - Curate and make stories..",
-   "icons": {
-      "128": "storify-icon.png",
-      "16": "storify-this.ico"
-   },
-   "minimum_chrome_version": "5.0",
-   "name": "Storify Extension",
-   "permissions": [ "contextMenus", "tabs", "http://*.storify.com/", "https://*.storify.com/" ],
-   "version": "0.0.1"
+  "background_page": "background.html",
+  "description": "Official Storify Extension - Curate and make stories..",
+  "icons": {
+    "128": "storify-icon.png",
+    "16": "storify-this.ico"
+  },
+  "content_scripts": [{
+    "matches": ["http://twitter.com/*", "https://twitter.com/*"],
+    "css": ["storify-twitter.css"],
+    "js": ["twitter.js"]
+  }],
+ "minimum_chrome_version": "5.0",
+ "name": "Storify Extension",
+ "permissions": [ "contextMenus", "tabs", "http://*.storify.com/", "https://*.storify.com/" ],
+ "version": "0.0.2"
 }
