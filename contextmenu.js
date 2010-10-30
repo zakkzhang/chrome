@@ -1,22 +1,19 @@
 
 function storifyThis(info, tab) {
-  console.log( this, info, tab );
-  var permalink = info.linkUrl || info.pageUrl || info;
-  var text = info.selectionText || '';
-  var photo = info.srcUrl || '';
+  var permalink = info.linkUrl || info.srcUrl || info.pageUrl;
+  var text      = info.selectionText || '';
   var importUrl = 'http://storify.com/import?permalink=' + encodeURIComponent(permalink)
-                + '&text=' + encodeURIComponent(text)
-                + '&photo=' + encodeURIComponent(photo);
+                + '&text=' + encodeURIComponent(text);
 
-  chrome.windows.getLastFocused(function(window) {
+  chrome.windows.get(tab.windowId, function(window) {
     var w = 460,
         h = 580,
         sh = window.height,
         sw = window.width,
         top = 0;
     var left = Math.round((sw/2)-(w/2));
-    if(sh>h){
-      top=Math.round((sh/2)-(h/2))
+    if (sh > h) {
+      top = Math.round((sh/2)-(h/2))
     }
     chrome.windows.create({
       "url": importUrl,
@@ -29,10 +26,9 @@ function storifyThis(info, tab) {
   });
 }
 
-
-var storifySelection = chrome.contextMenus.create({
-  "title":    "Storify This... Selection",
-  "contexts": ["selection"],
+var storifyImage = chrome.contextMenus.create({
+  "title":    "Storify This... Image",
+  "contexts": ["image"],
   "onclick":  storifyThis
 });
 
@@ -48,8 +44,8 @@ var storifyPage = chrome.contextMenus.create({
   "onclick":  storifyThis
 });
 
-var storifyImage = chrome.contextMenus.create({
-  "title":    "Storify This... Image",
-  "contexts": ["image"],
+var storifySelection = chrome.contextMenus.create({
+  "title":    "Storify This... Selection",
+  "contexts": ["selection"],
   "onclick":  storifyThis
 });
