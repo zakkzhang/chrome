@@ -1,14 +1,7 @@
-waitForjQuery();
+// Stay in the Storify namespace (strfy).
+var strfy = strfy || {};
 
-function waitForjQuery() {
-  if (typeof jQuery == 'undefined') {
-    setTimeout(waitForjQuery, 10000);
-  } else {
-    initStorify();
-  }
-}
-
-function initStorify() {
+strfy.storifyTwitter = function() {
 
   function setTarget(permalink) {
     return 'http://storify.com/import?permalink='+encodeURIComponent(permalink);
@@ -45,4 +38,15 @@ function initStorify() {
     }
   });
 
+};
+
+strfy.waitForjQuery = function() {
+  if (typeof jQuery == 'undefined') {
+    setTimeout(strfy.waitForjQuery, 100);
+  } else {
+    strfy.storifyTwitter();
+  }
 }
+
+// Twitter loads jQuery dynamically. Wait for it to load before hooking in.
+strfy.waitForjQuery();
