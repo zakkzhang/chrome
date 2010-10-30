@@ -13,5 +13,5 @@
  "minimum_chrome_version": "5.0",
  "name": "Storify Extension",
  "permissions": [ "contextMenus", "tabs", "http://*.storify.com/", "https://*.storify.com/" ],
- "version": "0.0.2"
+ "version": "0.0.3"
 }
