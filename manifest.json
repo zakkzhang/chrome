@@ -1,9 +1,10 @@
 {
   "background_page": "background.html",
-  "description": "Official Storify Extension - Curate and make stories..",
+  "description": "Storify Chrome Extension - Curate and make stories.",
   "icons": {
-    "128": "storify-icon.png",
-    "16": "storify-this.ico"
+    "16": "storify-this.ico",
+    "48": "storify-icon-48.png",
+    "128": "storify-icon.png"
   },
   "content_scripts": [{
     "matches": ["http://twitter.com/*", "https://twitter.com/*"],
@@ -13,5 +14,5 @@
  "minimum_chrome_version": "5.0",
  "name": "Storify Extension",
  "permissions": [ "contextMenus", "tabs", "http://*.storify.com/", "https://*.storify.com/" ],
- "version": "0.0.3"
+ "version": "0.1.0"
 }
