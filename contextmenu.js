@@ -1,9 +1,14 @@
+var SFY = SFY || {
+  baseUrl: 'http://storify.com',
+  appname: 'storifychrome'
+};
 
 function storifyThis(info, tab) {
   var permalink = info.linkUrl || info.srcUrl || info.pageUrl;
   var text      = info.selectionText || '';
-  var importUrl = 'http://storify.com/import?permalink=' + encodeURIComponent(permalink)
-                + '&text=' + encodeURIComponent(text);
+  var importUrl = SFY.baseUrl+'/import?appname=' + SFY.appname
+                + '&permalink=' + encodeURIComponent(permalink)
+                + (text.length) ? '&text=' + encodeURIComponent(text) : '';
 
   chrome.windows.get(tab.windowId, function(window) {
     var w = 460,

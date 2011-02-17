@@ -1,12 +1,16 @@
-// Stay in the Storify namespace (strfy).
-var strfy = strfy || {};
+// Stay in the Storify namespace (SFY).
+var SFY = SFY || {
+  baseUrl: 'http://storify.com',
+  appname: 'storifychrome'
+};
 
-strfy.storifyTwitter = function() {
+SFY.storifyTwitter = function() {
 
   function setTarget(permalink) {
-    return 'http://storify.com/import?permalink='+encodeURIComponent(permalink);
+    return SFY.baseUrl+'/import?appname='+SFY.appname+'&permalink='+encodeURIComponent(permalink);
   }
 
+  // Storify #newtwitter .tweet(s)
   $('#page-container').delegate('.tweet', 'mouseover', function() {
     var permalinkAttr = 'data-storify-permalink';
     if ( $(this).find('.storify-action').length === 0 || !$(this).attr(permalinkAttr) ) {
@@ -14,9 +18,11 @@ strfy.storifyTwitter = function() {
                     + '/status/' + $(this).attr('data-tweet-id');
       $(this).attr(permalinkAttr, permalink);
       var target = setTarget(permalink);
-      var storifyAction = $('<a href="' + target + '" class="storify-action" '
-                        + '><span><i></i><b>Storify</b></span></a>')
-          .click(function(e) {
+      var storifyAction = $('<a/>', {
+          href: target,
+          class: 'storify-action',
+          html: '<span><i></i><b>Storify</b></span>',
+          click: function(e) {
             e.preventDefault();
             var w = 460,
                 h = 580,
@@ -31,22 +37,23 @@ strfy.storifyTwitter = function() {
             if (popup) {
               popup.focus();
             } else {
-              window.location.href=target;
+              window.location.href = target;
             }
-          });
+          }
+        });
       $(this).find('.tweet-actions').prepend(storifyAction);
     }
   });
 
 };
 
-strfy.waitForjQuery = function() {
+SFY.waitForjQuery = function() {
   if (typeof jQuery == 'undefined') {
-    setTimeout(strfy.waitForjQuery, 100);
+    setTimeout(SFY.waitForjQuery, 100);
   } else {
-    strfy.storifyTwitter();
+    SFY.storifyTwitter();
   }
-}
+};
 
 // Twitter loads jQuery dynamically. Wait for it to load before hooking in.
-strfy.waitForjQuery();
+SFY.waitForjQuery();
