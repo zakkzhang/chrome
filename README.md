@@ -7,9 +7,9 @@ The official [Storify](http://storify.com/) chrome extension. Storify the social
 Installing
 -----
 
-Currently only the development release is available.
+Go to [chrome.storify.com](http://chrome.storify.com) to download the release version.
 
-Development releases are easy to access. Simply download or clone this code and load as an unpacked extension.
+To access development releases, simply download or clone this code and load as an unpacked extension.
 
 Source Code: [github.com/storify/chrome](http://github.com/storify/chrome)
 

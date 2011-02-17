@@ -6,9 +6,18 @@ var SFY = SFY || {
 function storifyThis(info, tab) {
   var permalink = info.linkUrl || info.srcUrl || info.pageUrl;
   var text      = info.selectionText || '';
+  var title     = tab.title || '';
+  var favicon   = tab.favIconUrl || '';
+
+  if (text != '') {
+    text = text.toString().substr(0,500).replace(/\n|\r/g,' ');
+  }
+
   var importUrl = SFY.baseUrl+'/import?appname=' + SFY.appname
                 + '&permalink=' + encodeURIComponent(permalink)
-                + (text.length) ? '&text=' + encodeURIComponent(text) : '';
+                + '&text=' + encodeURIComponent(text)
+                + '&title=' + encodeURIComponent(title)
+                + '&favicon=' + encodeURIComponent(favicon);
 
   chrome.windows.get(tab.windowId, function(window) {
     var w = 460,
