@@ -10,14 +10,14 @@
   "content_scripts": [{
     "matches": ["*://twitter.com/*"],
     "css": ["storify-twitter.css"],
-    "js": ["twitter.js"]
+    "js": ["jquery-1.5.1.min.js", "storify.js", "storify-twitter.js"]
   }, {
     "matches": ["*://*.facebook.com/*"],
     "css": ["storify-facebook.css"],
-    "js": ["jquery-1.5.1.min.js", "storify-facebook.js"]
+    "js": ["jquery-1.5.1.min.js", "storify.js", "storify-facebook.js"]
   }],
  "minimum_chrome_version": "5.0",
  "name": "Storify Extension",
  "permissions": [ "contextMenus", "tabs", "*://*.storify.com/" ],
- "version": "0.2.1"
+ "version": "0.2.2"
 }

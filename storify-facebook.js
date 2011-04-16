@@ -1,17 +1,17 @@
 // Stay in the Storify namespace (SFY).
-var SFY = SFY || {
-  baseUrl:  'http://storify.com',
-  appname:  'storifychrome'
-};
+var SFY = SFY || {};
 
 // FB has its own `$` selector.
 $.noConflict();
 
 jQuery(document).ready(function($) {
+  var baseUrl = SFY.baseUrl
+    , appname = SFY.appname
+    , strictEncodeURIComponent = SFY.strictEncodeURIComponent;
 
   var setTarget = function(permalink, storyElement) {
-    var target = SFY.baseUrl+'/import?appname='+SFY.appname+'&permalink='+encodeURIComponent(permalink);
-    if (storyElement) target += '&storyElement='+encodeURIComponent(storyElement);
+    var target = baseUrl+'/import?appname='+appname+'&permalink='+strictEncodeURIComponent(permalink)+'&text=&title=';
+    if (storyElement) target += '&storyElement='+strictEncodeURIComponent(storyElement);
     return target;
   };
 
