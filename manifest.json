@@ -1,6 +1,6 @@
 {
   "background_page": "background.html",
-  "description": "Storify Chrome Extension - Curate and make stories.",
+  "description": "Official Storify.com Chrome Extension - make social media stories",
   "icons": {
     "16":  "storify-this.ico",
     "32":  "storify-icon-32.png",
@@ -14,5 +14,5 @@
  "minimum_chrome_version": "5.0",
  "name": "Storify Extension",
  "permissions": [ "contextMenus", "tabs", "*://*.storify.com/" ],
- "version": "0.2.5"
+ "version": "0.2.6"
 }
