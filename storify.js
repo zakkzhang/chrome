@@ -17,9 +17,12 @@ var SFY = {
 };
 
 (function() {
+  if(window.location.href.substr(0,8)=="https://") {
+    SFY.base_url = SFY.base_url.replace('http://','https://');
+  }
 	_my_script = document.createElement('SCRIPT');
 	_my_script.type = 'text/javascript';
-	_my_script.src = SFY.base_url + '/public/js/bookmarklet.js?x=' + (Math.random());
+	_my_script.src = SFY.base_url + '/public/js/bookmarklet.js');
 	document.getElementsByTagName('html')[0].setAttribute('STORIFY_APPNAME',SFY.appname);
 	document.getElementsByTagName('head')[0].appendChild(_my_script);
 })();
