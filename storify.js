@@ -22,7 +22,7 @@ var SFY = {
   }
 	_my_script = document.createElement('SCRIPT');
 	_my_script.type = 'text/javascript';
-	_my_script.src = SFY.base_url + '/public/js/bookmarklet.js');
+	_my_script.src = SFY.base_url + '/public/js/bookmarklet.js';
 	document.getElementsByTagName('html')[0].setAttribute('STORIFY_APPNAME',SFY.appname);
 	document.getElementsByTagName('head')[0].appendChild(_my_script);
 })();
